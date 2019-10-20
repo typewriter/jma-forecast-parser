@@ -1,5 +1,7 @@
 # JMA Forecast Parser
 
+[![Build Status](https://travis-ci.org/typewriter/jma-forecast-parser.svg?branch=master)](https://travis-ci.org/typewriter/jma-forecast-parser)
+
 ## Requirement
 
 - Ruby (>= 2.5)
