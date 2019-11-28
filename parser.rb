@@ -1,4 +1,47 @@
 class JmaForecastParser
+  # Return
+  # {
+  #   :updated
+  # {
+  #   # 風 (パースしません)
+  #   :wind => { :sentence => "東の風　後　南東の風" },
+  #   # 天気
+  #   :weather => {
+  #     # 
+  #     :sentence => "晴れ　昼過ぎ　から　時々　くもり　所により　夜のはじめ頃　雨",
+  #     # 3時間ごとの分割結果
+  #     :sentence_every_3_hours => {
+  #       0 => "晴れ",
+  #       3 => "晴れ",
+  #       6 => "晴れ",
+  #       9 => "晴れ",
+  #       12 => "晴れ　時々　くもり",
+  #       15 => "晴れ　時々　くもり",
+  #       18 => "晴れ　時々　くもり　所により　雨",
+  #       21 => "晴れ　時々　くもり"
+  #     },
+  #     # 3時間ごとの分割結果(詳細)
+  #     :parsed_every_3_hours => {
+  #       0
+  #
+  #     }
+  #   },
+  #   # 降水確率(%): [0-6時, 6-12時, 12-18時, 18-24時]
+  #   :rainy => [30, 20, 10, 0],
+  #   # 気温(度): [朝の最低気温, 日中の最高気温]
+  #   :temp => [20, 25]
+  # }
+  def self.parse_from_sentence(sentence)
+
+  end
+
+  def self.parse_from_yoho_html(yoho_html)
+
+  end
+
+end
+
+class OldJmaForecastParser
   # ref. https://www.jma.go.jp/jma/kishou/know/yougo_hp/mokuji.html
   TIMING = /未明|明け方|朝|昼前|昼過ぎ|夕方|夜のはじめ頃|夜|夜遅く|から|まで|朝晩/
   FREQUENCY = /時々|一時|後/
@@ -7,7 +50,7 @@ class JmaForecastParser
 
   def self.parse(forecast)
     if forecast =~ /(?:(.+(?:風|強く))[ 　])?(.+)/
-      return { wind: $1, weather: JmaForecastParser.parse_weather($2) }
+      return { wind: $1, weather: parse_weather($2) }
     end
     nil
   end

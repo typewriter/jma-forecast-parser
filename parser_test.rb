@@ -5,7 +5,7 @@ require './parser.rb'
 # were previously announced by the Japan Meteorological Agency.
 class TestParser < MiniTest::Unit::TestCase
   def validate(input, expected)
-    assert_equal expected, JmaForecastParser.parse(input)
+    assert_equal expected, OldJmaForecastParser.parse(input)
   end
 
   def test_1
